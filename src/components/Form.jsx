@@ -8,18 +8,13 @@ export default function Form() {
 
   const sendData = (data) => {
     axios
-      .post(
-        "https://sheet.best/api/sheets/2418f65d-582f-4ddd-811a-26f5099df372",
-        data
-      )
+      .post("/api", JSON.stringify(data))
       .then((response) => {
-        if (response.status === 200) {
-          toast.success("Form submitted successfully");
-          reset();
-        }
+        toast.success("Form submitted successfully !");
+        reset();
       })
       .catch((error) => {
-        toast.error(error.message);
+        console.log(error.message);
       });
   };
 
@@ -29,27 +24,27 @@ export default function Form() {
       className="flex flex-col gap-4 w-96"
     >
       <input
-        {...register("name")}
+        {...register("Name")}
         type="text"
-        placeholder="name"
+        placeholder="Name:"
         className="outline-none px-4 py-2 rounded-lg border border-white bg-zinc-800 placeholder:text-white"
       />
       <input
-        {...register("email")}
+        {...register("Email")}
         type="email"
-        placeholder="email"
+        placeholder="Email:"
         className="outline-none px-4 py-2 rounded-lg border border-white bg-zinc-800 placeholder:text-white"
       />
       <input
-        {...register("message")}
+        {...register("Message")}
         type="text"
-        placeholder="message"
+        placeholder="Message:"
         className="outline-none px-4 py-2 rounded-lg border border-white bg-zinc-800 placeholder:text-white"
       />
       <input
         type="submit"
         value="Submit"
-        className="px-4 py-3 bg-rose-500 rounded-lg cursor-pointer"
+        className="px-4 py-3 bg-rose-500 rounded-lg font-semibold cursor-pointer"
       />
     </form>
   );
