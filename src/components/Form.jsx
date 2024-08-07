@@ -14,6 +14,7 @@ export default function Form() {
         reset();
       })
       .catch((error) => {
+        toast.error("Some error occurred while submitting the form !");
         console.log(error.message);
       });
   };
