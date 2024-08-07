@@ -1,6 +1,6 @@
 (1) - make html form and keep the "name" property (or ...register in case of react-hook-form) of input tags same as column headings in google sheet (case sensitive)
 
-(2) - change sharing setting of google sheet to "anyone with the link"
+(2) - change sharing setting of google sheet to "anyone with the link" and option to "Editor"
 
 (3) - google apps script code :-
 
@@ -25,7 +25,9 @@ function doPost(e) {
   return output;
 }
 
-(4) - add this in vite.config.js after plugins :-
+(4) - deploy script -> as Web App -> Execute as Me -> Who has access Anyone
+
+(5) - add this in vite.config.js after plugins :-
 server: {
     proxy: {
       "/api": {
@@ -36,3 +38,23 @@ server: {
       },
     },
 },
+
+(6) - Axios Post Request :-
+axios.post("/api", JSON.stringify(data), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        toast.success("Form submitted successfully!");
+        reset();
+      })
+      .catch((error) => {
+        toast.error("Some error occurred while submitting the form!");
+        console.log(error);
+      });
+
+
+(7) - for hosting on netlify make _redirects in public folder
+/api  script_url_here 200!
+/* /index.html 200
