@@ -8,14 +8,23 @@ export default function Form() {
 
   const sendData = (data) => {
     axios
-      .post("/api", JSON.stringify(data))
+      .post("/api", JSON.stringify(data), {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
       .then((response) => {
-        toast.success("Form submitted successfully !");
+        toast.success("Form submitted successfully!");
         reset();
       })
       .catch((error) => {
-        toast.error("Some error occurred while submitting the form !");
-        console.log(error.message);
+        toast.error("Some error occurred while submitting the form!");
+        console.log("Error message:", error.message);
+        if (error.response) {
+          console.log("Response data:", error.response.data);
+          console.log("Response status:", error.response.status);
+          console.log("Response headers:", error.response.headers);
+        }
       });
   };
 
