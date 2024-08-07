@@ -19,12 +19,7 @@ export default function Form() {
       })
       .catch((error) => {
         toast.error("Some error occurred while submitting the form!");
-        console.log("Error message:", error.message);
-        if (error.response) {
-          console.log("Response data:", error.response.data);
-          console.log("Response status:", error.response.status);
-          console.log("Response headers:", error.response.headers);
-        }
+        console.log(error);
       });
   };
 
