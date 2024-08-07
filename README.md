@@ -80,7 +80,9 @@ axios
   });
 ```
 
-### 7. Pushing into production (for netlify - make \_redirects in public folder)
+### 7. Pushing into production (for netlify - make _redirects in public folder)
 
+```javascript
 /api  script_url_here 200!
 /* /index.html 200
+```
